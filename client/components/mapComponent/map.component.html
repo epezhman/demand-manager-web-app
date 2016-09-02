@@ -1,1 +1,5 @@
-MAP
+<ul>
+    <li class="text" *ngFor="let device of devices | async">
+        {{device.$value}}
+    </li>
+</ul>

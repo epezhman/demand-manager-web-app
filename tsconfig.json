@@ -6,7 +6,8 @@
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "sourceMap": true
   },
   "files": [
     "client/app.module.ts",
