@@ -8,5 +8,8 @@
   "resolution": {
     "main": "typings/main",
     "browser": "typings/browser"
+  },
+  "dependencies": {
+    "firebase": "registry:npm/firebase#3.0.5+20160723033700"
   }
 }

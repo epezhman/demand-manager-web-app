@@ -15,7 +15,7 @@
     "angular2-meteor": "0.7.0-beta.1",
     "angular2-meteor-accounts-ui": "^0.6.1",
     "angular2-meteor-polyfills": "0.1.1",
-    "angularfire2": "^2.0.0-beta.4",
+    "angularfire2": "2.0.0-beta.4",
     "bcrypt": "^0.8.7",
     "core-js": "2.4.0",
     "es6-shim": "0.35.0",
@@ -26,6 +26,7 @@
     "zone.js": "0.6.10"
   },
   "devDependencies": {
+    "angularfire2": "^2.0.0-beta.3-pre2",
     "linklocal": "^2.6.0"
   },
   "license": "MIT"
