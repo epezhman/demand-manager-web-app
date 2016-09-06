@@ -1,6 +1,6 @@
 @import "./components/layout";
+@import "components/spinnerComponent/spinner.component";
 @import "{}/node_modules/angular2-meteor-accounts-ui/build/login-buttons.scss";
-
 
 .loading-wrapper {
   width: 450px;
@@ -36,5 +36,9 @@
 }
 
 .sebm-google-map-container {
-  height: 300px;
+  height: 900px;
 }
+
+
+
+

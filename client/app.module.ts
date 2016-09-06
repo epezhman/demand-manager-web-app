@@ -11,6 +11,7 @@ import {LoginButtons} from "angular2-meteor-accounts-ui";
 import {AngularFireModule, WindowLocation} from "angularfire2";
 import {AppComponent} from "./app.component";
 import {NavComponent} from "./components/navComponent/nav.component";
+import {SpinnerComponent} from "./components/spinnerComponent/spinner.component";
 import {WelcomeComponent} from "./components/welcomeComponent/welcome.component";
 import {MapComponent} from "./components/mapComponent/map.component";
 import {AgmCoreModule, provideLazyMapsAPILoaderConfig} from "angular2-google-maps/core";
@@ -31,7 +32,7 @@ export const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig),
         AgmCoreModule.forRoot()],
     declarations: [AppComponent, NavComponent, WelcomeComponent,
-        MapComponent, LoginButtons],
+        MapComponent, LoginButtons, SpinnerComponent],
     bootstrap: [AppComponent],
     providers: [
         provideLazyMapsAPILoaderConfig({apiKey: 'AIzaSyCnrXBo3KQiqcLOGWxzPMrrZ3EIFlObow8'}),

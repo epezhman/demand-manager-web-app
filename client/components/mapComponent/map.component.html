@@ -1,9 +1,6 @@
-<ul>
-    <li class="text" *ngFor="let device of items | async">
-        {{device.$value}}
-    </li>
-</ul>
+<!--<line-spinner [isRunning]="isLoading"></line-spinner>-->
+<div [hidden]="!isLoading" class="loader-line"></div>
 
-<sebm-google-map [latitude]="lat" [longitude]="lng">
-    <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+<sebm-google-map [latitude]="lat_munich" [longitude]="lng_munich" [zoom]="zoom_munich">
+    <!--<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>-->
 </sebm-google-map>

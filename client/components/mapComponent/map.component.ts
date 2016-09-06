@@ -1,8 +1,9 @@
 import {Component} from "@angular/core";
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 //noinspection TypeScriptCheckImport
 import template from "./map.component.html";
+
 
 @Component({
     moduleId: module.id,
@@ -10,14 +11,15 @@ import template from "./map.component.html";
     template: template
 })
 export class MapComponent {
-    items: FirebaseListObservable<any>;
-
-    title: string = 'My first angular2-google-maps project';
-    lat: number = 51.678418;
-    lng: number = 7.809007;
+    devices: FirebaseListObservable<any>;
+    isLoading: boolean = true;
+    lat_munich: number = 48.139;
+    lng_munich: number = 11.566;
+    zoom_munich: number = 11;
 
     constructor(af: AngularFire) {
-        this.items = af.database.list('/online');
+        this.devices = af.database.list('/online');
+        this.devices.first().subscribe(() => this.isLoading = false);
 
     }
 
