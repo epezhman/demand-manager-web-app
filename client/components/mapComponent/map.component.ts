@@ -23,4 +23,9 @@ export class MapComponent {
 
     }
 
+    clickedMarker(label: string) {
+        console.log(`clicked the marker: ${label}`)
+    }
+
+
 }
