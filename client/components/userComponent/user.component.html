@@ -1,0 +1,44 @@
+<div class="page-container">
+    <h2> Registered Users of the Website</h2>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th style="width: 100px;">Is Admin</th>
+                        <th style="width: 150px;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr *ngFor="let user of users; let i = index">
+                        <td>{{i + 1}}</td>
+                        <td>{{ user.emails[0].address}}</td>
+                        <td>
+                            <span *ngIf="isAdmin(user)" class="label label-success">Yes</span>
+                            <span *ngIf="!isAdmin(user)" class="label label-warning">No</span>
+                        </td>
+                        <td>
+                            <button *ngIf="!isAdmin(user) && isAllowedToChangeAdmin()"
+                                    class="btn btn-primary btn-group-sm"
+                                    (click)="addAdmin(user)">Add to Admin
+                            </button>
+                            <button *ngIf="isAdmin(user)&& isAllowedToChangeAdmin()"
+                                    class="btn btn-warning btn-group-sm"
+                                    (click)="removeAdmin(user)">
+                                Remove from Admin
+                            </button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
