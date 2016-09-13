@@ -144,10 +144,6 @@
 
 }
 
-.page-container {
-  padding: 5px 10px;
-}
-
 .welcome {
 
   $header-background-color: #fefefe;
@@ -223,4 +219,35 @@
     color: $header-background-color;
   }
 }
+
+.footer {
+  text-align: center;
+  padding: 5px;
+  color: #333;
+  a {
+    color: #333;
+
+  }
+}
+
+.online-status {
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: #16a085;
+
+  &.online {
+    background-color: #16a085;
+  }
+
+  &.offline {
+    background-color: #e74c3c;
+  }
+
+}
+
+
 

@@ -3,6 +3,7 @@ import {AngularFire, FirebaseListObservable} from "angularfire2";
 
 //noinspection TypeScriptCheckImport
 import template from "./map.component.html";
+import {Device} from "../../../lib/interfaces/device.interface";
 
 
 @Component({
@@ -11,7 +12,7 @@ import template from "./map.component.html";
     template: template
 })
 export class MapComponent implements OnInit {
-    devices: FirebaseListObservable<any>;
+    devices: FirebaseListObservable<Device[]>;
     isLoading: boolean = true;
     lat_munich: number = 48.139;
     lng_munich: number = 11.566;

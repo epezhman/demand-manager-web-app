@@ -12,10 +12,12 @@ import {AppComponent} from "./app.component";
 import {WelcomeComponent} from "./components/welcomeComponent/welcome.component";
 import {MapComponent} from "./components/mapComponent/map.component";
 import {AgmCoreModule, provideLazyMapsAPILoaderConfig} from "angular2-google-maps/core";
-import {DeviceComponent} from "./components/deviceComponent/device.component";
+import {DeviceListComponent} from "./components/deviceComponent/device-list.component";
 import {UserComponent} from "./components/userComponent/user.component";
 import {NotFoundComponent} from "./components/notFoundComponent/notfound.component";
 import "../lib/methods/users.methods";
+import {DeviceStatusPipe} from "./pipes/device-status.pipe";
+import {DeviceDetailComponent} from "./components/deviceComponent/device-detail.component";
 
 enableProdMode();
 
@@ -32,7 +34,8 @@ export const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig),
         AgmCoreModule.forRoot()],
     declarations: [AppComponent, WelcomeComponent, NotFoundComponent,
-        MapComponent, LoginButtons, DeviceComponent, UserComponent],
+        MapComponent, LoginButtons, DeviceListComponent, UserComponent, DeviceStatusPipe,
+        DeviceDetailComponent],
     bootstrap: [AppComponent],
     providers: [
         appRoutingProviders,

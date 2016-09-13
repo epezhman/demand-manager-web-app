@@ -1,6 +1,11 @@
-<div class="page-container">
-    <h2> Registered Users of the Website</h2>
+<div [hidden]="!isLoading" class="loader-line"></div>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Registered Users of the Website</h2>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-8">
             <div class="table-responsive">

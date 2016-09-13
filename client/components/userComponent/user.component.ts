@@ -10,7 +10,7 @@ import template from "./user.component.html";
     template: template,
 })
 export class UserComponent extends MeteorComponent implements OnInit {
-
+    isLoading: boolean = true;
     users: Mongo.Cursor<Meteor.User>;
 
     constructor() {
@@ -20,6 +20,7 @@ export class UserComponent extends MeteorComponent implements OnInit {
     ngOnInit() {
         this.subscribe('users-list', () => {
             this.users = Meteor.users.find({});
+            this.isLoading = false;
         }, true);
     }
 
