@@ -18,6 +18,10 @@ import {NotFoundComponent} from "./components/notFoundComponent/notfound.compone
 import "../lib/methods/users.methods";
 import {DeviceStatusPipe} from "./pipes/device-status.pipe";
 import {DeviceDetailComponent} from "./components/deviceComponent/device-detail.component";
+import {Ng2PaginationModule} from 'ng2-pagination';
+import {StringFilterPipe} from "./pipes/string-filter.pipe";
+import {LocationFilterPipe} from "./pipes/location-filter.pipe";
+
 
 enableProdMode();
 
@@ -31,11 +35,11 @@ export const firebaseConfig = {
 
 @NgModule({
     imports: [BrowserModule, routing, MeteorModule, FormsModule,
-        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireModule.initializeApp(firebaseConfig), Ng2PaginationModule,
         AgmCoreModule.forRoot()],
     declarations: [AppComponent, WelcomeComponent, NotFoundComponent,
         MapComponent, LoginButtons, DeviceListComponent, UserComponent, DeviceStatusPipe,
-        DeviceDetailComponent],
+        DeviceDetailComponent, StringFilterPipe, LocationFilterPipe],
     bootstrap: [AppComponent],
     providers: [
         appRoutingProviders,

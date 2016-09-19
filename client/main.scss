@@ -249,5 +249,25 @@
 
 }
 
+.pagination {
+  cursor: pointer;
+}
 
+.search-form {
+  padding: 5px 0;
+}
 
+.page-margin-with-user {
+  margin: 0 !important;
+}
+
+.page-margin-without-user {
+  margin: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .page-margin-with-user {
+    margin: 0 0 0 250px !important;
+  }
+
+}

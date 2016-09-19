@@ -6,8 +6,8 @@
     <sebm-google-map-marker
             *ngFor="let device of devices | async"
             (markerClick)="clickedMarker(device.$key)"
-            [latitude]="device.location['latitude']"
-            [longitude]="device.location['longitude']"
+            [latitude]="device.l[0]"
+            [longitude]="device.l[1]"
             [label]="device.$key">
 
         <sebm-google-map-info-window>

@@ -1,37 +1,72 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
-
+import {Device} from "../../../lib/interfaces/device.interface";
+import * as _ from 'lodash';
 //noinspection TypeScriptCheckImport
 import template from "./device-list.component.html";
-import {Device} from "../../../lib/interfaces/device.interface";
+import {IPaginationInstance} from "ng2-pagination";
 
 
 @Component({
     moduleId: module.id,
     selector: 'device-list',
-    template: template,
+    template: template
 })
 export class DeviceListComponent implements OnInit {
-    devices: FirebaseListObservable<Device[]>;
+    devicesObservable: FirebaseListObservable<Device[]>;
+    devices: Device[] = [];
     isLoading: boolean = true;
+    selectedDevices: string[] = [];
+
+    keyFilter: string = '';
+    latitudeFilter: number;
+    longitudeFilter: number;
+    radiusFilter: number;
+
 
     constructor(private af: AngularFire) {
 
     }
 
     ngOnInit(): void {
-        this.devices = this.af.database.list('/online');
-        this.devices.first().subscribe(() => this.isLoading = false);
+        this.devicesObservable = this.af.database.list('/online', {
+            query: {
+                orderByKey: true,
+            }
+        });
+        this.devicesObservable.subscribe((devicesData)=> {
+            this.devices = devicesData;
+            this.isLoading = false
+        });
     }
-
 
     onlineStatus(device: Device): string {
         if (!device)
             return '';
-        if(device.connections)
+        if (device.connections)
             return '<div class="online-status online" data-toggle="tooltip" title="Online"></div>';
         return '<div class="online-status offline" data-toggle="tooltip" title="Offline"></div>';
 
     }
+
+    public configPagination: IPaginationInstance = {
+        id: 'devicesPagination',
+        itemsPerPage: 10,
+        currentPage: 1
+    };
+
+    onChangePageSize(pageSize: number) {
+        this.configPagination.itemsPerPage = pageSize;
+    }
+
+    updateSelectedDevices(deviceId: string, event) {
+        if (event.target.checked) {
+            this.selectedDevices.push(deviceId);
+        }
+        else {
+            _.pull(this.selectedDevices, deviceId);
+        }
+    }
+
 
 }

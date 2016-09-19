@@ -12,7 +12,8 @@ import template from "./device-detail.component.html";
     template: template,
 })
 export class DeviceDetailComponent implements OnInit {
-    device: FirebaseObjectObservable<DeviceDetail>;
+    deviceObserver: FirebaseObjectObservable<DeviceDetail>;
+    device: DeviceDetail;
     isLoading: boolean = true;
 
     constructor(private af: AngularFire, private route: ActivatedRoute) {
@@ -23,8 +24,9 @@ export class DeviceDetailComponent implements OnInit {
         this.route.params
             .map(params => params['deviceId'])
             .subscribe(deviceId => {
-                this.device = this.af.database.object('/devices/' + deviceId);
-                this.device.subscribe(() => {
+                this.deviceObserver = this.af.database.object('/devices/' + deviceId);
+                this.deviceObserver.subscribe((deviceData) => {
+                    this.device = deviceData;
                     this.isLoading = false
                 });
             });

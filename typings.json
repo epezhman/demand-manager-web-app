@@ -10,6 +10,7 @@
     "browser": "typings/browser"
   },
   "dependencies": {
-    "firebase": "registry:npm/firebase#3.0.5+20160723033700"
+    "firebase": "registry:npm/firebase#3.0.5+20160723033700",
+    "lodash": "registry:npm/lodash#4.0.0+20160723033700"
   }
 }

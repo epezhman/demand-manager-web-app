@@ -8,5 +8,9 @@
             <h2 class="page-header">Device Detail</h2>
         </div>
     </div>
-    <h1>{{ device | async | json }}</h1>
+
+    <div [hidden]="!device">
+        <h1>{{ device | json }}</h1>
+
+    </div>
 </div>
