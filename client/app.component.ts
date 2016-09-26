@@ -8,6 +8,7 @@ import {MeteorComponent} from "angular2-meteor";
 
 
 @Component({
+    moduleId: module.id,
     selector: 'app',
     template: template
 })

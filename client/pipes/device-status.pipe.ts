@@ -10,7 +10,7 @@ export class DeviceStatusPipe {
         if (!device)
             return '';
         console.log(device);
-        if(device.connections)
+        if (device.connections)
             return '<div class="online-status online" data-toggle="tooltip" title="Online"></div>';
         return '<div class="online-status offline" data-toggle="tooltip" title="Offline"></div>';
 

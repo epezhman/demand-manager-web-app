@@ -6,6 +6,7 @@ import {MeteorComponent} from "angular2-meteor";
 import template from "./user.component.html";
 
 @Component({
+    moduleId: module.id,
     selector: 'user-section',
     template: template,
 })

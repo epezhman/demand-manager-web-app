@@ -1,9 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
-
+import {Device} from "../../../lib/interfaces/device.interface";
 //noinspection TypeScriptCheckImport
 import template from "./map.component.html";
-import {Device} from "../../../lib/interfaces/device.interface";
+
 
 
 @Component({
@@ -29,7 +29,7 @@ export class MapComponent implements OnInit {
 
     ngOnInit(): void {
         this.devices = this.af.database.list('/online');
-        this.devices.first().subscribe(() => this.isLoading = false);
+        this.devices.subscribe(() => this.isLoading = false);
     }
 
 

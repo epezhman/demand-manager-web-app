@@ -5,6 +5,7 @@ import template from "./notfound.component.html";
 
 
 @Component({
+    moduleId: module.id,
     selector: 'not-found',
     template: template,
 })

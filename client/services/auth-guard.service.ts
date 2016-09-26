@@ -1,6 +1,6 @@
-import {Injectable}     from '@angular/core';
-import {CanActivate, Router}    from '@angular/router';
-import {Meteor} from 'meteor/meteor';
+import {Injectable} from "@angular/core";
+import {CanActivate, Router} from "@angular/router";
+import {Meteor} from "meteor/meteor";
 
 
 @Injectable()

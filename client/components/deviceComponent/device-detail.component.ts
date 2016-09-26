@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, Output, EventEmitter, DoCheck} from "@angular/core";
 import {AngularFire, FirebaseObjectObservable} from "angularfire2";
-import {DeviceDetail} from "../../../lib/interfaces/device.interface";
-import {ActivatedRoute} from '@angular/router';
+import {DeviceDetail, Device} from "../../../lib/interfaces/device.interface";
+import * as _ from 'lodash';
 
 //noinspection TypeScriptCheckImport
 import template from "./device-detail.component.html";
@@ -11,25 +11,43 @@ import template from "./device-detail.component.html";
     selector: 'device-detail',
     template: template,
 })
-export class DeviceDetailComponent implements OnInit {
-    deviceObserver: FirebaseObjectObservable<DeviceDetail>;
-    device: DeviceDetail;
-    isLoading: boolean = true;
+export class DeviceDetailComponent implements DoCheck {
+    @Input() inputDevices: string[];
+    oldDevices: string[];
+    oldLength = 0;
 
-    constructor(private af: AngularFire, private route: ActivatedRoute) {
+    devicesObserver: any = {};
+    devices: any = {};
+    @Output() isLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+    constructor(private af: AngularFire) {
 
     }
 
-    ngOnInit(): void {
-        this.route.params
-            .map(params => params['deviceId'])
-            .subscribe(deviceId => {
-                this.deviceObserver = this.af.database.object('/devices/' + deviceId);
-                this.deviceObserver.subscribe((deviceData) => {
-                    this.device = deviceData;
-                    this.isLoading = false
-                });
+
+    ngDoCheck() {
+        let newLength = this.inputDevices.length;
+        if (this.oldLength !== newLength) {
+            this.oldLength = newLength;
+            this.observeDevices();
+        }
+    }
+
+    observeDevices() {
+        let devicesToAdd = _.difference(this.inputDevices, this.oldDevices);
+        let devicesToRemove = _.difference(this.oldDevices, this.inputDevices);
+        for (let newDevice of devicesToAdd) {
+            this.devices[newDevice] = newDevice;
+            this.devicesObserver[newDevice] = this.af.database.object('/devices/' + newDevice);
+            this.devicesObserver[newDevice].subscribe((deviceData) => {
+                this.devices[newDevice] = deviceData;
             });
+        }
+        for (let oldDevice of devicesToRemove) {
+            delete this.devicesObserver[oldDevice];
+            delete this.devices[oldDevice];
+        }
+        this.oldDevices = _.cloneDeep(this.inputDevices);
 
     }
 

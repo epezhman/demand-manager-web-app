@@ -1,10 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ChangeDetectorRef} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {Device} from "../../../lib/interfaces/device.interface";
-import * as _ from 'lodash';
+import * as _ from "lodash";
+import {IPaginationInstance} from "ng2-pagination";
 //noinspection TypeScriptCheckImport
 import template from "./device-list.component.html";
-import {IPaginationInstance} from "ng2-pagination";
 
 
 @Component({
@@ -17,6 +17,7 @@ export class DeviceListComponent implements OnInit {
     devices: Device[] = [];
     isLoading: boolean = true;
     selectedDevices: string[] = [];
+    selectAll: boolean = false;
 
     keyFilter: string = '';
     latitudeFilter: number;
@@ -27,6 +28,7 @@ export class DeviceListComponent implements OnInit {
     constructor(private af: AngularFire) {
 
     }
+
 
     ngOnInit(): void {
         this.devicesObservable = this.af.database.list('/online', {
@@ -55,17 +57,31 @@ export class DeviceListComponent implements OnInit {
         currentPage: 1
     };
 
-    onChangePageSize(pageSize: number) {
+    onChangePageSize(pageSize: number): void {
         this.configPagination.itemsPerPage = pageSize;
     }
 
-    updateSelectedDevices(deviceId: string, event) {
+    updateSelectedDevices(deviceId: string, event): void {
         if (event.target.checked) {
             this.selectedDevices.push(deviceId);
         }
         else {
             _.pull(this.selectedDevices, deviceId);
         }
+    }
+
+
+    loadingDeviceDetail(loading: boolean): void {
+        this.isLoading = loading;
+    }
+
+    selectAllDevices(): void {
+        this.selectAll = true;
+    }
+
+    deselectAllDevices(): void {
+        this.selectAll = false;
+        this.selectedDevices = [];
     }
 
 

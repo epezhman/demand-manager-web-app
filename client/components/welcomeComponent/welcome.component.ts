@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
-
-//noinspection TypeScriptCheckImport
-import template from "./welcome.component.html";
+import {Component} from "@angular/core";
 import {MeteorComponent} from "angular2-meteor";
 import {InjectUser} from "angular2-meteor-accounts-ui";
 
+//noinspection TypeScriptCheckImport
+import template from "./welcome.component.html";
+
 
 @Component({
+
     selector: 'welcome-section',
     template: template,
 })

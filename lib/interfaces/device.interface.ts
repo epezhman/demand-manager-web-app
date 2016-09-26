@@ -3,6 +3,7 @@ export interface Device {
     connections?: string[];
     g?: string;
     l?: number[];
+    selected?: boolean;
 }
 
 

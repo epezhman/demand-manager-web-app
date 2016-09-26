@@ -1,6 +1,6 @@
 import {Pipe} from "@angular/core";
 import {Device} from "../../lib/interfaces/device.interface";
-import 'geolib';
+import "geolib";
 
 @Pipe({
     name: 'locationFilter'

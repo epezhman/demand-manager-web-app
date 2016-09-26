@@ -18,7 +18,7 @@ import {NotFoundComponent} from "./components/notFoundComponent/notfound.compone
 import "../lib/methods/users.methods";
 import {DeviceStatusPipe} from "./pipes/device-status.pipe";
 import {DeviceDetailComponent} from "./components/deviceComponent/device-detail.component";
-import {Ng2PaginationModule} from 'ng2-pagination';
+import {Ng2PaginationModule} from "ng2-pagination";
 import {StringFilterPipe} from "./pipes/string-filter.pipe";
 import {LocationFilterPipe} from "./pipes/location-filter.pipe";
 

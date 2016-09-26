@@ -1,16 +1,17 @@
-<div [hidden]="!isLoading" class="loader-line"></div>
-
-
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Device Detail</h2>
-        </div>
+<div class="panel panel-default" *ngIf="devices">
+    <div class="panel-heading">
+        Devices Detail
     </div>
 
-    <div [hidden]="!device">
-        <h1>{{ device | json }}</h1>
+    {{devices|json}}
+    <div class="panel-body">
+
+        <ul>
+            <li ngFor="let device in devices">
+                <!--{{device['current-version']}}-->
+            </li>
+        </ul>
+
 
     </div>
 </div>
