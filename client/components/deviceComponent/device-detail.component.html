@@ -1,17 +1,25 @@
-<div class="panel panel-default" *ngIf="devices">
-    <div class="panel-heading">
-        Devices Detail
+<div class="row" *ngIf="getDevicesCount()">
+    <div class="col-md-6">
+       <h3>Devices' Detail</h3>
     </div>
+    <div class="col-md-6">
+        <div class="btn-group pull-right" *ngIf="getDevicesCount()" style="padding-bottom: 10px;">
+            <button type="button" class="btn btn-primary" (click)="toggleAll(true)">Show All</button>
+            <button type="button" class="btn btn-default" (click)="toggleAll(false)">Hide All</button>
+        </div>
+    </div>
+</div>
 
-    {{devices|json}}
-    <div class="panel-body">
+<div *ngFor="let device of getDeviceObjectsAsList()">
+    <div class="panel panel-default">
+        <div class="panel-heading"
+             (click)="toggleView(device)"
+             style="cursor: pointer;">
+            {{device['current-version']}}
+        </div>
 
-        <ul>
-            <li ngFor="let device in devices">
-                <!--{{device['current-version']}}-->
-            </li>
-        </ul>
-
-
+        <div class="panel-body" *ngIf="isVisiblePanel(device)">
+            dd
+        </div>
     </div>
 </div>

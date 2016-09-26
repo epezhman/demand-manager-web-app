@@ -9,4 +9,5 @@ export interface Device {
 
 export interface DeviceDetail {
     $key?: string;
+    visible?: boolean;
 }

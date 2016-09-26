@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from "@angular/core";
+import {Component, OnInit, ChangeDetectorRef, ApplicationRef} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {Device} from "../../../lib/interfaces/device.interface";
 import * as _ from "lodash";
