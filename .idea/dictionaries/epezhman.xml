@@ -2,6 +2,8 @@
   <dictionary name="epezhman">
     <words>
       <w>firebase</w>
+      <w>notif</w>
+      <w>toastr</w>
     </words>
   </dictionary>
 </component>

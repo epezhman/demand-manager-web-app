@@ -21,9 +21,17 @@ import {DeviceDetailComponent} from "./components/deviceComponent/device-detail.
 import {Ng2PaginationModule} from "ng2-pagination";
 import {StringFilterPipe} from "./pipes/string-filter.pipe";
 import {LocationFilterPipe} from "./pipes/location-filter.pipe";
+import {StrictAuthGuard} from "./services/string-auth-guard.service";
+import {AuthGuard} from "./services/auth-guard.service";
+import {FirebaseComponent} from "./components/firebaseComponent/firebase.component";
+import {SimpleNotificationsModule} from "angular2-notifications";
 
 
-enableProdMode();
+
+if(Meteor.isProduction)
+{
+    enableProdMode();
+}
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAtWT98dejyLr9BQXkmxiTHbBtbKQ1ObnY",
@@ -36,12 +44,14 @@ export const firebaseConfig = {
 @NgModule({
     imports: [BrowserModule, routing, MeteorModule, FormsModule,
         AngularFireModule.initializeApp(firebaseConfig), Ng2PaginationModule,
-        AgmCoreModule.forRoot()],
+        AgmCoreModule.forRoot(), SimpleNotificationsModule],
     declarations: [AppComponent, WelcomeComponent, NotFoundComponent,
         MapComponent, LoginButtons, DeviceListComponent, UserComponent, DeviceStatusPipe,
-        DeviceDetailComponent, StringFilterPipe, LocationFilterPipe],
+        DeviceDetailComponent, StringFilterPipe, LocationFilterPipe, FirebaseComponent],
     bootstrap: [AppComponent],
     providers: [
+        StrictAuthGuard,
+        AuthGuard,
         appRoutingProviders,
         provideLazyMapsAPILoaderConfig({apiKey: 'AIzaSyCnrXBo3KQiqcLOGWxzPMrrZ3EIFlObow8'}),
         {

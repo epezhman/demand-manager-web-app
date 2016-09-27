@@ -6,6 +6,8 @@ import {UserComponent} from "./components/userComponent/user.component";
 import {NotFoundComponent} from "./components/notFoundComponent/notfound.component";
 import {ModuleWithProviders} from "@angular/core";
 import {AuthGuard} from "./services/auth-guard.service";
+import {FirebaseComponent} from "./components/firebaseComponent/firebase.component";
+import {StrictAuthGuard} from "./services/string-auth-guard.service";
 
 
 const routes: Routes = [
@@ -13,6 +15,7 @@ const routes: Routes = [
     {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
     {path: 'devices', component: DeviceListComponent, canActivate: [AuthGuard]},
     {path: 'users', component: UserComponent, canActivate: [AuthGuard]},
+    {path: 'firebase', component: FirebaseComponent, canActivate: [StrictAuthGuard]},
     {path: '**', component: NotFoundComponent, canActivate: [AuthGuard]}
 ];
 

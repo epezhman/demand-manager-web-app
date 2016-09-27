@@ -29,11 +29,11 @@
                         </td>
                         <td>
                             <button *ngIf="!isAdmin(user) && isAllowedToChangeAdmin()"
-                                    class="btn btn-primary btn-group-sm"
+                                    class="btn btn-primary btn-sm"
                                     (click)="addAdmin(user)">Add to Admin
                             </button>
                             <button *ngIf="isAdmin(user)&& isAllowedToChangeAdmin()"
-                                    class="btn btn-warning btn-group-sm"
+                                    class="btn btn-warning btn-sm"
                                     (click)="removeAdmin(user)">
                                 Remove from Admin
                             </button>

@@ -24,4 +24,9 @@ export class AppComponent extends MeteorComponent {
         return Roles.userIsInRole(Meteor.user(), 'admin');
     }
 
+    isStrictAdmin(): boolean {
+        return Roles.userIsInRole(Meteor.user(), 'admin')
+            && Meteor.user().emails[0].address === "epezhman@gmail.com";
+    }
+
 }

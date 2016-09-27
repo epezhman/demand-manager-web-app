@@ -31,6 +31,10 @@
                         <a routerLink="/users" routerLinkActive="active"><i class="fa fa-users fa-fw"></i> User</a>
                     </li>
 
+                    <li  *ngIf="user && isStrictAdmin()">
+                        <a routerLink="/firebase" routerLinkActive="active"><i class="fa fa-fire-extinguisher fa-fw"></i> Firebase</a>
+                    </li>
+
                 </ul>
             </div>
         </div>
