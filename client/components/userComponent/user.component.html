@@ -7,14 +7,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Users
                 </div>
 
-                <div class="panel-body" *ngIf="isVisiblePanel(device)">
+                <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
@@ -36,11 +36,11 @@
                                 </td>
                                 <td>
                                     <button *ngIf="!isAdmin(user) && isAllowedToChangeAdmin()"
-                                            class="btn btn-primary btn-sm"
+                                            class="btn btn-primary btn-group-sm"
                                             (click)="addAdmin(user)">Add to Admin
                                     </button>
                                     <button *ngIf="isAdmin(user)&& isAllowedToChangeAdmin()"
-                                            class="btn btn-warning btn-sm"
+                                            class="btn btn-warning btn-group-sm"
                                             (click)="removeAdmin(user)">
                                         Remove from Admin
                                     </button>
