@@ -55,20 +55,24 @@
                                 [fillColor]="colorCircle"
                                 [strokeColor]="strokeColorCircle"
                                 (radiusChange)="radiusChange($event)"
-                                (centerChange)="centerChange($event)">
+                                (centerChange)="centerChange($event)"
+                                (dragEnd)="dragEnd()">
                         </sebm-google-map-circle>
 
 
                         <sebm-google-map-marker
                                 *ngFor="let device of devices"
-                                (markerClick)="clickedMarker(device.$key)"
+                                (markerClick)="toggleDeviceView(device.$key)"
                                 [latitude]="device.l[0]"
                                 [longitude]="device.l[1]"
                                 [title]="device.$key"
                                 [iconUrl]="onlineStatus(device)">
 
                             <sebm-google-map-info-window>
-                                <strong>InfoWindow content</strong>
+                                <spane class="primary-font"><i class="fa fa-laptop"></i> {{device.$key}}</spane>
+                                <br>
+                                <small>
+                                    <i class="fa fa-location-arrow"></i> {{ device.l[0]}} - {{ device.l[1]}}</small>
                             </sebm-google-map-info-window>
 
                         </sebm-google-map-marker>

@@ -70,11 +70,11 @@ export class DeviceListComponent implements OnInit {
         }
     }
 
-
     loadingDeviceDetail(loading: boolean): void {
         this.isLoading = loading;
     }
 
+    // TODO: this select all does not fire the change event
     selectAllDevices(): void {
         this.selectAll = true;
     }

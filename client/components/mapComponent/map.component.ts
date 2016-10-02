@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {Device} from "../../../lib/interfaces/device.interface";
 import * as _ from "lodash";
+import "geolib";
+
 //noinspection TypeScriptCheckImport
 import template from "./map.component.html";
 
@@ -12,7 +14,6 @@ import template from "./map.component.html";
     template: template
 })
 export class MapComponent implements OnInit {
-    devices: FirebaseListObservable<Device[]>;
     devicesObservable: FirebaseListObservable<Device[]>;
     devices: Device[] = [];
     isLoading: boolean = true;
@@ -40,22 +41,8 @@ export class MapComponent implements OnInit {
         });
     }
 
-    clickedMarker(deviceId: string) {
-        if (this.selectedDevices.indexOf(deviceId) < 0) {
-            this.selectedDevices.push(deviceId);
-        }
-        else {
-            _.pull(this.selectedDevices, deviceId);
-        }
-    }
-
-    radiusChange(radius: number) {
-        this.radiusCircle = radius;
-    }
-
-    centerChange(center) {
-        this.latCircle = center['lat'];
-        this.lngCircle = center['lng'];
+    loadingDeviceDetail(loading: boolean): void {
+        this.isLoading = loading;
     }
 
     onlineStatus(device: Device): string {
@@ -64,12 +51,57 @@ export class MapComponent implements OnInit {
         if (device.connections)
             return '/images/green-dot.png';
         return '/images/red-dot.png';
-
     }
 
-    loadingDeviceDetail(loading: boolean): void {
-        this.isLoading = loading;
+    toggleDeviceView(deviceId: string): void {
+        if (this.selectedDevices.indexOf(deviceId) < 0) {
+            this.selectedDevices.push(deviceId);
+        }
+        else {
+            _.pull(this.selectedDevices, deviceId);
+        }
     }
 
+    addDeviceView(deviceId: string): void {
+        if (this.selectedDevices.indexOf(deviceId) < 0) {
+            this.selectedDevices.push(deviceId);
+        }
+    }
 
+    removeDeviceView(deviceId: string): void {
+        if (this.selectedDevices.indexOf(deviceId) > -1) {
+            _.pull(this.selectedDevices, deviceId);
+        }
+    }
+
+    filterDevices(): void {
+        _.forEach(this.devices, (device) => {
+            //noinspection TypeScriptUnresolvedVariable
+            if (geolib.isPointInCircle(
+                    {latitude: device.l[0], longitude: device.l[1]},
+                    {latitude: this.latCircle, longitude: this.lngCircle},
+                    this.radiusCircle
+                )) {
+                this.addDeviceView(device.$key);
+            }
+            else {
+                this.removeDeviceView(device.$key);
+            }
+        });
+    }
+
+    radiusChange(radius: number): void {
+        this.radiusCircle = radius;
+        this.filterDevices();
+    }
+
+    centerChange(center) {
+        this.latCircle = center['lat'];
+        this.lngCircle = center['lng'];
+    }
+
+    // TODO: bug when changing the location with center of circle
+    dragEnd(): void {
+        this.filterDevices();
+    }
 }
