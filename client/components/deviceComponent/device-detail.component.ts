@@ -70,7 +70,7 @@ export class DeviceDetailComponent implements DoCheck {
         delete this.devices[oldDevice];
         delete this.loadingObserver[oldDevice];
         this.devicesSubscription[oldDevice].unsubscribe();
-        delete this.devicesSubscription[oldDevice]
+        delete this.devicesSubscription[oldDevice];
         this.checkIfLoadingShouldBeStopped();
     }
 
