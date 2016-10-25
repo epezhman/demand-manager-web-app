@@ -30,7 +30,6 @@ export class MapComponent implements OnInit {
     colorCircle: string = "blue";
     strokeColorCircle: string = "blue";
 
-
     constructor(private af: AngularFire) {
     }
 

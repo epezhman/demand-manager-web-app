@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter, DoCheck, ApplicationRef, ChangeDetectionStrategy} from "@angular/core";
-import {AngularFire, FirebaseObjectObservable} from "angularfire2";
+import {Component, Input, Output, EventEmitter, DoCheck} from "@angular/core";
+import {AngularFire} from "angularfire2";
 import * as _ from "lodash";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
 
@@ -40,6 +40,8 @@ export class DeviceDetailComponent implements DoCheck {
     devicesHardwareSubscription = {};
 
     devices = {};
+    devicesToSumPower = [];
+    devicesToSumLocation = [];
 
     constructor(private af: AngularFire) {
 
@@ -165,10 +167,25 @@ export class DeviceDetailComponent implements DoCheck {
     }
 
     toggleAll(visibility: boolean): void {
-
         for (let device of _.keys(this.devices)) {
             this.devices[device].visible = visibility;
         }
+    }
+
+    sumAll(): void {
+        this.devicesToSumPower = [];
+        _.forEach(this.devices, (profile, key)=> {
+            this.devicesToSumPower.push(profile['power']);
+        });
+        this.devicesToSumLocation = [];
+        _.forEach(this.devices, (profile, key)=> {
+            this.devicesToSumLocation.push(profile['location']);
+        });
+    }
+
+    clearSum(): void {
+        this.devicesToSumPower = [];
+        this.devicesToSumLocation = [];
     }
 
 }

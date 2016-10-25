@@ -14,9 +14,7 @@
                 <div class="panel-heading">
                     Devices
                 </div>
-
                 <div class="panel-body">
-
                     <fieldset>
                         <legend>Filter</legend>
                         <div class="form-inline search-form">
@@ -37,10 +35,7 @@
                             </div>
                         </div>
                     </fieldset>
-
                     <sebm-google-map [latitude]="latMunich" [longitude]="lngMunich" [zoom]="zoomMunich">
-
-
                         <sebm-google-map-circle
                                 [latitude]="latCircle"
                                 [longitude]="lngCircle"
@@ -53,8 +48,6 @@
                                 (centerChange)="centerChange($event)"
                                 (dragEnd)="dragEnd()">
                         </sebm-google-map-circle>
-
-
                         <sebm-google-map-marker
                                 *ngFor="let device of devices"
                                 (markerClick)="toggleDeviceView(device.$key)"
@@ -62,14 +55,12 @@
                                 [longitude]="device.l[1]"
                                 [title]="device.$key"
                                 [iconUrl]="onlineStatus(device)">
-
                             <sebm-google-map-info-window>
                                 <span class="primary-font"><i class="fa fa-laptop"></i> {{device.$key}}</span>
                                 <br>
                                 <small>
                                     <i class="fa fa-location-arrow"></i> {{ device.l[0]}} - {{ device.l[1]}}</small>
                             </sebm-google-map-info-window>
-
                         </sebm-google-map-marker>
                     </sebm-google-map>
                 </div>
