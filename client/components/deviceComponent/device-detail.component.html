@@ -10,6 +10,37 @@
     </div>
 </div>
 
+
+<div *ngIf="getDevicesCount() > 1">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Average Selected Devices </h3>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>{{getDevicesCount()}} devices selected </h4>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4> Powers Profile </h4>
+                    <power-chart-device-sum [chartDevices]="devices"></power-chart-device-sum>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4> Locations Profile </h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div *ngFor="let device of getDeviceObjectsAsList();let i = index">
     <div class="panel panel-default">
         <div class="panel-heading"
@@ -49,14 +80,14 @@
                     </div>
                 </div>
             </div>
-            <br>
+            <hr>
             <div class="row">
                 <div class="col-md-12">
                     <h4> Power Profile </h4>
                     <power-chart-device [chartDevice]="device['power']"></power-chart-device>
                 </div>
             </div>
-            <br>
+            <hr>
             <div class="row">
                 <div class="col-md-12">
                     <h4> Location Profile </h4>

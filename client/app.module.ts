@@ -28,6 +28,7 @@ import {SimpleNotificationsModule} from "angular2-notifications";
 import {PowerChartDeviceComponent} from "./components/chartComponent/power-chart-device.component";
 import {CHART_DIRECTIVES} from "ng2-charts/ng2-charts";
 import {MapDeviceComponent} from "./components/mapComponent/map-device.component";
+import {PowerChartDeviceSumComponent} from "./components/chartComponent/power-chart-device-sum.component";
 
 if (Meteor.isProduction) {
     enableProdMode();
@@ -65,6 +66,7 @@ export const firebaseConfig = {
         FirebaseComponent,
         PowerChartDeviceComponent,
         MapDeviceComponent,
+        PowerChartDeviceSumComponent,
         CHART_DIRECTIVES,
     ],
     bootstrap: [AppComponent],
