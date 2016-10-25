@@ -11,7 +11,8 @@ import template from "./map.component.html";
 @Component({
     moduleId: module.id,
     selector: 'map-section',
-    template: template
+    template: template,
+    styles: ['.sebm-google-map-container {height: 600px;}']
 })
 export class MapComponent implements OnInit {
     devicesObservable: FirebaseListObservable<Device[]>;

@@ -25,11 +25,11 @@ import {StrictAuthGuard} from "./services/string-auth-guard.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import {FirebaseComponent} from "./components/firebaseComponent/firebase.component";
 import {SimpleNotificationsModule} from "angular2-notifications";
+import {PowerChartDeviceComponent} from "./components/chartComponent/power-chart-device.component";
+import {CHART_DIRECTIVES} from "ng2-charts/ng2-charts";
+import {MapDeviceComponent} from "./components/mapComponent/map-device.component";
 
-
-
-if(Meteor.isProduction)
-{
+if (Meteor.isProduction) {
     enableProdMode();
 }
 
@@ -42,12 +42,31 @@ export const firebaseConfig = {
 
 
 @NgModule({
-    imports: [BrowserModule, routing, MeteorModule, FormsModule,
-        AngularFireModule.initializeApp(firebaseConfig), Ng2PaginationModule,
-        AgmCoreModule.forRoot(), SimpleNotificationsModule],
-    declarations: [AppComponent, WelcomeComponent, NotFoundComponent,
-        MapComponent, LoginButtons, DeviceListComponent, UserComponent, DeviceStatusPipe,
-        DeviceDetailComponent, StringFilterPipe, LocationFilterPipe, FirebaseComponent],
+    imports: [BrowserModule,
+        routing,
+        MeteorModule,
+        FormsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        Ng2PaginationModule,
+        AgmCoreModule.forRoot(),
+        SimpleNotificationsModule,
+    ],
+    declarations: [AppComponent,
+        WelcomeComponent,
+        NotFoundComponent,
+        MapComponent,
+        LoginButtons,
+        DeviceListComponent,
+        UserComponent,
+        DeviceStatusPipe,
+        DeviceDetailComponent,
+        StringFilterPipe,
+        LocationFilterPipe,
+        FirebaseComponent,
+        PowerChartDeviceComponent,
+        MapDeviceComponent,
+        CHART_DIRECTIVES,
+    ],
     bootstrap: [AppComponent],
     providers: [
         StrictAuthGuard,

@@ -29,7 +29,6 @@ export class DeviceListComponent implements OnInit {
 
     }
 
-
     ngOnInit(): void {
         this.devicesObservable = this.af.database.list('/online', {
             query: {

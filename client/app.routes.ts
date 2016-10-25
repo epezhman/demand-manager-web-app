@@ -9,7 +9,6 @@ import {AuthGuard} from "./services/auth-guard.service";
 import {FirebaseComponent} from "./components/firebaseComponent/firebase.component";
 import {StrictAuthGuard} from "./services/string-auth-guard.service";
 
-
 const routes: Routes = [
     {path: '', component: WelcomeComponent},
     {path: 'map', component: MapComponent, canActivate: [AuthGuard]},

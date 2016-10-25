@@ -63,6 +63,12 @@ export class FirebaseComponent {
                         });
                     },
                     (cb)=> {
+                        const onlineObservable = this.af.database.object(`/location-cluster/${this.removeDeviceId}`);
+                        onlineObservable.remove().then(()=> {
+                            cb(null);
+                        });
+                    },
+                    (cb)=> {
                         const onlineObservable = this.af.database.object(`/online/${this.removeDeviceId}`);
                         onlineObservable.remove().then(()=> {
                             cb(null);
@@ -70,6 +76,11 @@ export class FirebaseComponent {
                     },
                     (cb)=> {
                         const onlineObservable = this.af.database.object(`/power/${this.removeDeviceId}`);
+                        onlineObservable.remove().then(()=> {
+                            cb(null);
+                        });
+                    },(cb)=> {
+                        const onlineObservable = this.af.database.object(`/power-cluster/${this.removeDeviceId}`);
                         onlineObservable.remove().then(()=> {
                             cb(null);
                         });

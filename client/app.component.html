@@ -31,10 +31,10 @@
                         <a routerLink="/users" routerLinkActive="active"><i class="fa fa-users fa-fw"></i> User</a>
                     </li>
 
-                    <li  *ngIf="user && isStrictAdmin()">
-                        <a routerLink="/firebase" routerLinkActive="active"><i class="fa fa-fire-extinguisher fa-fw"></i> Firebase</a>
+                    <li *ngIf="user && isStrictAdmin()">
+                        <a routerLink="/firebase" routerLinkActive="active"><i
+                                class="fa fa-fire-extinguisher fa-fw"></i> Firebase</a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -42,10 +42,11 @@
     </nav>
 </div>
 
-<div id="page-wrapper" style="min-height: 900px" [ngClass]="user ? 'page-margin-with-user':'page-margin-without-user'"  >
+<div id="page-wrapper" style="min-height: 900px" [ngClass]="user ? 'page-margin-with-user':'page-margin-without-user'">
     <router-outlet></router-outlet>
 </div>
 
 <div class="footer">
-    <span class="copyright">© 2016 -  <a href="https://www.i13.in.tum.de/">Chair for Application and Middleware Systems</a>.</span>
+    <span class="copyright">© 2016 -  <a
+            href="https://www.i13.in.tum.de/">Chair for Application and Middleware Systems</a>.</span>
 </div>
