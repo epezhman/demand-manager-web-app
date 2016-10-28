@@ -4,6 +4,7 @@
             [latitude]="loc['latitude']"
             [longitude]="loc['longitude']"
             [title]="loc['day_of_week'] + loc['section_of_day']"
+            [iconUrl]="iconBasedOnDay(loc)"
             [openInfoWindow]="true">
 
         <sebm-google-map-info-window>

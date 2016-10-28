@@ -29,6 +29,7 @@ import {PowerChartDeviceComponent} from "./components/chartComponent/power-chart
 import {CHART_DIRECTIVES} from "ng2-charts/ng2-charts";
 import {MapDeviceComponent} from "./components/mapComponent/map-device.component";
 import {PowerChartDeviceSumComponent} from "./components/chartComponent/power-chart-device-sum.component";
+import {MapDevicesSumComponent} from "./components/mapComponent/map-device-sum.component";
 
 if (Meteor.isProduction) {
     enableProdMode();
@@ -67,6 +68,7 @@ export const firebaseConfig = {
         PowerChartDeviceComponent,
         MapDeviceComponent,
         PowerChartDeviceSumComponent,
+        MapDevicesSumComponent,
         CHART_DIRECTIVES,
     ],
     bootstrap: [AppComponent],

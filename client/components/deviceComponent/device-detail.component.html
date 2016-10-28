@@ -12,7 +12,7 @@
 </div>
 
 <div *ngIf="devicesToSumPower.length">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
         <div class="panel-heading">
             <h3 class="panel-title"> Average Selected Devices </h3>
         </div>
@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h4> Locations Profile </h4>
-
+                    <map-device-sum [mapDevices]="devicesToSumLocation"></map-device-sum>
                 </div>
             </div>
         </div>

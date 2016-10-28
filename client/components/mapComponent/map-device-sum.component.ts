@@ -4,16 +4,16 @@ import * as _ from "lodash";
 import "geolib";
 
 //noinspection TypeScriptCheckImport
-import template from "./map-device.component.html";
+import template from "./map-device-sum.component.html";
 
 
 @Component({
     moduleId: module.id,
-    selector: 'map-device',
+    selector: 'map-device-sum',
     template: template,
     styles: ['.sebm-google-map-container {height: 300px;}']
 })
-export class MapDeviceComponent {
+export class MapDevicesSumComponent {
     latMunich: number = 48.139;
     lngMunich: number = 11.566;
     zoomMunich: number = 10;
@@ -21,8 +21,32 @@ export class MapDeviceComponent {
     locationsData: Array<any> = [];
 
     @Input()
-    set mapDevice(mapDevice: DeviceDetail) {
-        this.locationsData = _.values(mapDevice);
+    set mapDevices(mapDevices: Array<DeviceDetail>) {
+        _.forEach(mapDevices, (mapDevice, key)=> {
+            this.locationsData = _.concat(this.locationsData, _.values(mapDevice));
+        });
     }
 
+    iconBasedOnDay(location: DeviceDetail): string {
+        if (!location)
+            return '';
+
+        switch (location['day_of_week']) {
+            case 'mon':
+                return '/images/maps_marker/blue_MarkerM.png';
+            case 'tue':
+                return '/images/maps_marker/brown_MarkerT.png';
+            case 'wed':
+                return '/images/maps_marker/orange_MarkerW.png';
+            case 'thu':
+                return '/images/maps_marker/paleblue_MarkerT.png';
+            case 'fri':
+                return '/images/maps_marker/pink_MarkerF.png';
+            case 'sat':
+                return '/images/maps_marker/yellow_MarkerS.png';
+            case 'sun':
+                return '/images/maps_marker/purple_MarkerS.png';
+        }
+        return '/images/red-dot.png';
+    }
 }

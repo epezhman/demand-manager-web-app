@@ -3,6 +3,7 @@ import "chart";
 import * as _ from "lodash";
 //noinspection TypeScriptCheckImport
 import template from "./power-chart-device-sum.component.html";
+import {DeviceDetail} from "../../../lib/interfaces/device.interface";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,7 @@ import template from "./power-chart-device-sum.component.html";
 export class PowerChartDeviceSumComponent {
     lineChartData: Array<any> = [];
     @Input()
-    set chartDevices(chartDevices) {
+    set chartDevices(chartDevices: Array<DeviceDetail>) {
         var ac_connected = [];
         var app_running = [];
         var computer_running = [];
