@@ -68,11 +68,20 @@
                     </dl>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-default pull-right" type="button" data-toggle="collapse"
-                            [attr.data-target]="'#collapse-hardware-' + i"
-                            aria-expanded="false">
-                        Hardware Info
-                    </button>
+                    <div class="btn-group pull-right btn-group-sm">
+                        <button type="button" class="btn btn-primary" data-toggle="collapse"
+                                [attr.data-target]="'#collapse-dr-schedule-' + i" aria-expanded="false">DR Schedule</button>
+                        <button type="button" class="btn btn-default" data-toggle="collapse"
+                                [attr.data-target]="'#collapse-hardware-' + i" aria-expanded="false">Hardware Info</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="collapse" id="collapse-dr-schedule-{{i}}">
+                        <command-schedule-device [scheduleDevice]="device['schedule']"></command-schedule-device>
+                    </div>
                 </div>
             </div>
             <div class="row">

@@ -33,8 +33,8 @@ export class DeviceDetailComponent implements DoCheck {
     devicesActivityObserver = {};
     devicesActivitySubscription = {};
 
-    devicesCommandObserver = {};
-    devicesCommandSubscription = {};
+    devicesScheduleObserver = {};
+    devicesScheduleSubscription = {};
 
     devicesHardwareObserver = {};
     devicesHardwareSubscription = {};
@@ -100,9 +100,9 @@ export class DeviceDetailComponent implements DoCheck {
             this.devices[newDevice]['key'] = deviceData.$key;
         });
 
-        this.devicesCommandObserver[newDevice] = this.af.database.object('/activity-status/' + newDevice);
-        this.devicesCommandSubscription[newDevice] = this.devicesCommandObserver[newDevice].subscribe((deviceData) => {
-            this.devices[newDevice]['command'] = deviceData;
+        this.devicesScheduleObserver[newDevice] = this.af.database.object('/schedule/' + newDevice);
+        this.devicesScheduleSubscription[newDevice] = this.devicesScheduleObserver[newDevice].subscribe((deviceData) => {
+            this.devices[newDevice]['schedule'] = deviceData;
         });
 
         this.devicesHardwareObserver[newDevice] = this.af.database.object('/hardware/' + newDevice);
@@ -116,7 +116,7 @@ export class DeviceDetailComponent implements DoCheck {
         delete this.devicesLocationObserver[oldDevice];
         delete this.devicesInfoObserver[oldDevice];
         delete this.devicesActivityObserver[oldDevice];
-        delete this.devicesCommandObserver[oldDevice];
+        delete this.devicesScheduleObserver[oldDevice];
         delete this.devicesHardwareObserver[oldDevice];
 
         delete this.devices[oldDevice];
@@ -134,8 +134,8 @@ export class DeviceDetailComponent implements DoCheck {
         this.devicesActivitySubscription[oldDevice].unsubscribe();
         delete this.devicesActivitySubscription[oldDevice];
 
-        this.devicesCommandSubscription[oldDevice].unsubscribe();
-        delete this.devicesCommandSubscription[oldDevice];
+        this.devicesScheduleSubscription[oldDevice].unsubscribe();
+        delete this.devicesScheduleSubscription[oldDevice];
 
         this.devicesHardwareSubscription[oldDevice].unsubscribe();
         delete this.devicesHardwareSubscription[oldDevice];
