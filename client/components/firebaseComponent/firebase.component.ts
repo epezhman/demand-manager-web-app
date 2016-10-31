@@ -21,6 +21,7 @@ export class FirebaseComponent {
 
     notifOptions = {
         timeOut: 5000,
+        position:["bottom", "left"]
     };
 
     constructor(private af: AngularFire, private notif: NotificationsService) {
@@ -81,6 +82,12 @@ export class FirebaseComponent {
                         });
                     },(cb)=> {
                         const onlineObservable = this.af.database.object(`/power-cluster/${this.removeDeviceId}`);
+                        onlineObservable.remove().then(()=> {
+                            cb(null);
+                        });
+                    },
+                    ,(cb)=> {
+                        const onlineObservable = this.af.database.object(`/schedule/${this.removeDeviceId}`);
                         onlineObservable.remove().then(()=> {
                             cb(null);
                         });

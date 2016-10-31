@@ -42,6 +42,9 @@ export class DeviceDetailComponent implements DoCheck {
     devices = {};
     devicesToSumPower = [];
     devicesToSumLocation = [];
+    devicesToSumSchedule = [];
+    devicesIdToSumSchedule = [];
+
 
     constructor(private af: AngularFire) {
 
@@ -181,11 +184,19 @@ export class DeviceDetailComponent implements DoCheck {
         _.forEach(this.devices, (profile, key)=> {
             this.devicesToSumLocation.push(profile['location']);
         });
+        this.devicesToSumSchedule = [];
+        this.devicesIdToSumSchedule = [];
+        _.forEach(this.devices, (profile, key)=> {
+            this.devicesToSumSchedule.push(profile['schedule']);
+            this.devicesIdToSumSchedule.push(profile['key']);
+        });
     }
 
     clearSum(): void {
         this.devicesToSumPower = [];
         this.devicesToSumLocation = [];
+        this.devicesToSumSchedule = [];
+        this.devicesIdToSumSchedule = [];
     }
 
 }

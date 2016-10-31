@@ -22,7 +22,10 @@ export class MapDeviceComponent {
 
     @Input()
     set mapDevice(mapDevice: DeviceDetail) {
-        this.locationsData = _.values(mapDevice);
+        if(mapDevice)
+        {
+            this.locationsData = _.values(mapDevice);
+        }
     }
 
     iconBasedOnDay(location: DeviceDetail): string {

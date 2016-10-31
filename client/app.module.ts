@@ -31,6 +31,9 @@ import {MapDeviceComponent} from "./components/mapComponent/map-device.component
 import {PowerChartDeviceSumComponent} from "./components/chartComponent/power-chart-device-sum.component";
 import {MapDevicesSumComponent} from "./components/mapComponent/map-device-sum.component";
 import {CommandScheduleComponent} from "./components/commandScheduleComponent/command-schedule.component";
+import {UtilsService} from "./services/utils.service";
+import {TimeAddZerosPipe} from "./pipes/time-add-zeros.pipe";
+import {CommandScheduleSumComponent} from "./components/commandScheduleComponent/command-schedule-sum.component";
 
 if (Meteor.isProduction) {
     enableProdMode();
@@ -65,18 +68,21 @@ export const firebaseConfig = {
         DeviceDetailComponent,
         StringFilterPipe,
         LocationFilterPipe,
+        TimeAddZerosPipe,
         FirebaseComponent,
         PowerChartDeviceComponent,
         MapDeviceComponent,
         PowerChartDeviceSumComponent,
         MapDevicesSumComponent,
         CommandScheduleComponent,
+        CommandScheduleSumComponent,
         CHART_DIRECTIVES,
     ],
     bootstrap: [AppComponent],
     providers: [
         StrictAuthGuard,
         AuthGuard,
+        UtilsService,
         appRoutingProviders,
         provideLazyMapsAPILoaderConfig({apiKey: 'AIzaSyCnrXBo3KQiqcLOGWxzPMrrZ3EIFlObow8'}),
         {

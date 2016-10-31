@@ -22,9 +22,11 @@ export class MapDevicesSumComponent {
 
     @Input()
     set mapDevices(mapDevices: Array<DeviceDetail>) {
-        _.forEach(mapDevices, (mapDevice, key)=> {
-            this.locationsData = _.concat(this.locationsData, _.values(mapDevice));
-        });
+        if (mapDevices) {
+            _.forEach(mapDevices, (mapDevice, key)=> {
+                this.locationsData = _.concat(this.locationsData, _.values(mapDevice));
+            });
+        }
     }
 
     iconBasedOnDay(location: DeviceDetail): string {

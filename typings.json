@@ -3,7 +3,8 @@
     "angular2-compilers": "github:meteor-typings/angular2-compilers#c2ca3d3036b08f04a22b98ed16ff17377499e1e7",
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "meteor": "github:meteor-typings/meteor/1.3#051ea1ecbbc8910132a78dcf0527f09664448295",
-    "node": "registry:dt/node#6.0.0+20160831021119"
+    "node": "registry:dt/node#6.0.0+20160831021119",
+    "firebase": "file:node_modules/firebase/firebase.d.ts"
   },
   "resolution": {
     "main": "typings/main",
