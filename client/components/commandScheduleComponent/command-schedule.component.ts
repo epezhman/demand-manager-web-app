@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {NotificationsService} from "angular2-notifications";
 import {AngularFire} from "angularfire2";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
@@ -10,7 +10,9 @@ import * as firebase from 'firebase';
 @Component({
     moduleId: module.id,
     selector: 'command-schedule-device',
-    template: template
+    template: template,
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class CommandScheduleComponent {
 

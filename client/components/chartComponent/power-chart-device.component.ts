@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import "chart";
 import * as _ from "lodash";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
@@ -8,7 +8,9 @@ import template from "./power-chart-device.component.html";
 @Component({
     moduleId: module.id,
     selector: 'power-chart-device',
-    template: template
+    template: template,
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class PowerChartDeviceComponent {
 

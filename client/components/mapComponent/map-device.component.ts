@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
 import * as _ from "lodash";
 import "geolib";
@@ -11,7 +11,8 @@ import template from "./map-device.component.html";
     moduleId: module.id,
     selector: 'map-device',
     template: template,
-    styles: ['.sebm-google-map-container {height: 300px;}']
+    styles: ['.sebm-google-map-container {height: 300px;}'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapDeviceComponent {
     latMunich: number = 48.139;

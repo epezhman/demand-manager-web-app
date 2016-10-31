@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {NotificationsService} from "angular2-notifications";
 import {AngularFire} from "angularfire2";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
@@ -12,7 +12,9 @@ import {each} from "async";
 @Component({
     moduleId: module.id,
     selector: 'command-schedule-devices-sum',
-    template: template
+    template: template,
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class CommandScheduleSumComponent {
 
