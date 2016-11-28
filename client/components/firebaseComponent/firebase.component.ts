@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {AngularFire, FirebaseListObservable} from "angularfire2";
 import {Device} from "../../../lib/interfaces/device.interface";
 import {series} from "async";
-import {NotificationsService} from "angular2-notifications";
+//import {NotificationsService} from "angular2-notifications";
 
 //noinspection TypeScriptCheckImport
 import template from "./firebase.component.html";
@@ -24,7 +24,11 @@ export class FirebaseComponent {
         position:["bottom", "left"]
     };
 
-    constructor(private af: AngularFire, private notif: NotificationsService) {
+    // constructor(private af: AngularFire, private notif: NotificationsService) {
+    //
+    // }
+
+    constructor(private af: AngularFire) {
 
     }
 
@@ -105,10 +109,10 @@ export class FirebaseComponent {
                     }
                 ],
                 (err, results) => {
-                    this.notif.success(
-                        'Success',
-                        'Device is removed.'
-                    );
+                    // this.notif.success(
+                    //     'Success',
+                    //     'Device is removed.'
+                    // );
                 });
         }
     }

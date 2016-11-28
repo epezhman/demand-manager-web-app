@@ -1,6 +1,6 @@
 'use strict';
 
-import {NgModule, enableProdMode} from "@angular/core";
+import {NgModule, enableProdMode, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {routing, appRoutingProviders} from "./app.routes";
 import {BrowserModule} from "@angular/platform-browser";
@@ -24,7 +24,7 @@ import {LocationFilterPipe} from "./pipes/location-filter.pipe";
 import {StrictAuthGuard} from "./services/string-auth-guard.service";
 import {AuthGuard} from "./services/auth-guard.service";
 import {FirebaseComponent} from "./components/firebaseComponent/firebase.component";
-import {SimpleNotificationsModule} from "angular2-notifications";
+//import {SimpleNotificationsModule} from "angular2-notifications";
 import {PowerChartDeviceComponent} from "./components/chartComponent/power-chart-device.component";
 import {CHART_DIRECTIVES} from "ng2-charts/ng2-charts";
 import {MapDeviceComponent} from "./components/mapComponent/map-device.component";
@@ -55,7 +55,7 @@ export const firebaseConfig = {
         AngularFireModule.initializeApp(firebaseConfig),
         Ng2PaginationModule,
         AgmCoreModule.forRoot(),
-        SimpleNotificationsModule,
+        //SimpleNotificationsModule,
     ],
     declarations: [AppComponent,
         WelcomeComponent,
@@ -78,6 +78,7 @@ export const firebaseConfig = {
         CommandScheduleSumComponent,
         CHART_DIRECTIVES,
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent],
     providers: [
         StrictAuthGuard,

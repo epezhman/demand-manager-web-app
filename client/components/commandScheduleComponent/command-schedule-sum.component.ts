@@ -1,5 +1,5 @@
 import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
-import {NotificationsService} from "angular2-notifications";
+//import {NotificationsService} from "angular2-notifications";
 import {AngularFire} from "angularfire2";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
 import * as _ from "lodash";
@@ -29,7 +29,12 @@ export class CommandScheduleSumComponent {
         position: ["bottom", "left"]
     };
 
-    constructor(private af: AngularFire, private notif: NotificationsService, private utils: UtilsService) {
+    // constructor(private af: AngularFire, private notif: NotificationsService, private utils: UtilsService) {
+    //     this.days = this.utils.getDays();
+    //     this.hours = this.utils.getHours();
+    // }
+
+    constructor(private af: AngularFire, private utils: UtilsService) {
         this.days = this.utils.getDays();
         this.hours = this.utils.getHours();
     }
@@ -82,17 +87,17 @@ export class CommandScheduleSumComponent {
             })
 
         }, (err) => {
-            if (err) {
-                this.notif.success(
-                    'Error',
-                    'Something went wront, try again please.'
-                );
-            } else {
-                this.notif.success(
-                    'Success',
-                    'Schedule Set.'
-                );
-            }
+            // if (err) {
+            //     this.notif.success(
+            //         'Error',
+            //         'Something went wront, try again please.'
+            //     );
+            // } else {
+            //     this.notif.success(
+            //         'Success',
+            //         'Schedule Set.'
+            //     );
+            // }
         });
 
     }

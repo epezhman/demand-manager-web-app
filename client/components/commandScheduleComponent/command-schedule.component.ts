@@ -1,5 +1,5 @@
 import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
-import {NotificationsService} from "angular2-notifications";
+//import {NotificationsService} from "angular2-notifications";
 import {AngularFire} from "angularfire2";
 import {DeviceDetail} from "../../../lib/interfaces/device.interface";
 //noinspection TypeScriptCheckImport
@@ -26,7 +26,12 @@ export class CommandScheduleComponent {
         position: ["bottom", "left"]
     };
 
-    constructor(private af: AngularFire, private notif: NotificationsService, private utils: UtilsService) {
+    // constructor(private af: AngularFire, private notif: NotificationsService, private utils: UtilsService) {
+    //     this.days = this.utils.getDays();
+    //     this.hours = this.utils.getHours();
+    // }
+
+    constructor(private af: AngularFire, private utils: UtilsService) {
         this.days = this.utils.getDays();
         this.hours = this.utils.getHours();
     }
@@ -47,16 +52,16 @@ export class CommandScheduleComponent {
         commandObservable.update({
             'dr_running_bool': schedule['dr_running_bool'],
             'last-updated': firebase.database.ServerValue.TIMESTAMP
-        }).then(()=> {
-            this.notif.success(
-                'Success',
-                'Schedule Set.'
-            );
+        }).then(() => {
+            // this.notif.success(
+            //     'Success',
+            //     'Schedule Set.'
+            // );
         }).catch((err) => {
-            this.notif.success(
-                'Error',
-                'Something went wront, try again please.'
-            );
+            // this.notif.success(
+            //     'Error',
+            //     'Something went wront, try again please.'
+            // );
         });
     }
 }
